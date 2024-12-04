@@ -27,9 +27,9 @@ const axios = require("axios"); // Asegúrate de que axios esté instalado
 const { Socket } = require('dgram');
 
 // URL del ESP32 (ajusta si cambia la dirección IP)
-const ESP32_URL = "http://192.168.0.132/datos";
-const ESP32_URL_2 = "http://192.168.0.133/datos";
-const ESP32_URL_3 = "http://192.168.0.134/datos";
+const ESP32_URL = "http://192.168.205.11/datos";
+const ESP32_URL_1 = "http://192.168.0.133/datos";
+const ESP32_URL_2 = "http://192.168.0.134/datos";
 
 // Función para obtener datos del ESP32
 async function obtenerDatosESP32(url) {
@@ -61,67 +61,37 @@ io.on('connection',(socket)=>{
 // Llama a la función cada 5 segundos
 setInterval(async ()=>{
     try{
-        const data_sensor_1 = await obtenerDatosESP32(ESP32_URL);
-        const data_sensor_2 = await obtenerDatosESP32(ESP32_URL_1);
-        const data_sensor_3 = await obtenerDatosESP32(ESP32_URL_2);
+        const data_sensor = await obtenerDatosESP32(ESP32_URL);
+        //const data_sensor_2 = await obtenerDatosESP32(ESP32_URL_1);
+        //const data_sensor_3 = await obtenerDatosESP32(ESP32_URL_2);
     
-            io.emit('data_sensor_1',{
-                temperaturaC1: data_sensor_1.temperaturaC,
-                temperaturaF1: data_sensor_1.temperaturaF,
-                humedad1: data_sensor_1.humedad,
+        if(data_sensor){
+            
+            io.emit('data_sensor',{
+                temperaturaC: data_sensor.temperaturaC,
+                temperaturaF: data_sensor.temperaturaF,
+                humedad: data_sensor.humedad,
                 //Calidad del aire
-                ppmMQ1351: data_sensor_1.ppmMQ135,
+                ppmMQ135: data_sensor.ppmMQ135,
                 //Calidad del aire compensado
-                ppmMQ135Compensado1: data_sensor_1.ppmMQ135Compensado,
+                ppmMQ135Compensado: data_sensor.ppmMQ135Compensado,
                 //Metano
-                ppmMQ41: data_sensor_1.ppmMQ4,
+                ppmMQ4: data_sensor.ppmMQ4,
                 //metano compensado
-                ppmMQ4Compensado1: data_sensor_1.ppmMQ4Compensado,
+                ppmMQ4Compensado: data_sensor.ppmMQ4Compensado,
                 //humedad del suelo
-                humedadSuelo1: data_sensor_1.humedadSuelo,
+                humedadSuelo: data_sensor.humedadSuelo,
                 //ReleEstado
-                estado:data_sensor_1.releEstado
+                estado:data_sensor.releEstado
             });
-            io.emit('data_sensor_2',{
-                temperaturaC1: data_sensor_2.temperaturaC,
-                temperaturaF1: data_sensor_2.temperaturaF,
-                humedad1: data_sensor_2.humedad,
-                //Calidad del aire
-                ppmMQ1351: data_sensor_2.ppmMQ135,
-                //Calidad del aire compensado
-                ppmMQ135Compensado1: data_sensor_2.ppmMQ135Compensado,
-                //Metano
-                ppmMQ41: data_sensor_2.ppmMQ4,
-                //metano compensado
-                ppmMQ4Compensado1: data_sensor_2.ppmMQ4Compensado,
-                //humedad del suelo
-                humedadSuelo1: data_sensor_2.humedadSuelo,
-                //ReleEstado
-                estado:data_sensor_2.releEstado
-            });
-            io.emit('data_sensor_3',{
-                temperaturaC1: data_sensor_3.temperaturaC,
-                temperaturaF1: data_sensor_3.temperaturaF,
-                humedad1: data_sensor_3.humedad,
-                //Calidad del aire
-                ppmMQ1351: data_sensor_3.ppmMQ135,
-                //Calidad del aire compensado
-                ppmMQ135Compensado1: data_sensor_3.ppmMQ135Compensado,
-                //Metano
-                ppmMQ41: data_sensor_3.ppmMQ4,
-                //metano compensado
-                ppmMQ4Compensado1: data_sensor_3.ppmMQ4Compensado,
-                //humedad del suelo
-                humedadSuelo1: data_sensor_3.humedadSuelo,
-                //ReleEstado
-                estado:data_sensor_3.releEstado
-            });
+            
+        }
         
         
     }catch(error){
         console.log(error);
     }
-}, 1650);
+}, 3000);
 
 
 
