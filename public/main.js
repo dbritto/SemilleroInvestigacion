@@ -3,42 +3,42 @@ const socket = io();
 
 socket.on('data',(data) =>{
     console.log(data);
-   let temperature = document.getElementById('temperaturec');
-   temperature.innerHTML = `${data.temperaturaC || 0}`;
+   let temperature1 = document.getElementById('temperaturec1');
+   temperature1.innerHTML = `${data.temperaturaC1 || 0}`;
 });
 
 
 
 socket.on('data',(data) =>{
     console.log(data);
-   let temperatureF = document.getElementById('temperaturef');
-   temperatureF.innerHTML = `${data.temperaturaF || 0}`;
+   let temperatureF1 = document.getElementById('temperaturef1');
+   temperatureF1.innerHTML = `${data.temperaturaF1 || 0}`;
 });
 
 
 socket.on('data',(data) =>{
     console.log(data);
-   let humedadSuelo = document.getElementById('humedadSuelo');
-   humedadSuelo.innerHTML = `${data.humedadSuelo || 0}`;
+   let humedadSuelo1 = document.getElementById('humedadSuelo1');
+   humedadSuelo1.innerHTML = `${data.humedadSuelo1 || 0}`;
 });
 
 socket.on('data',(data) =>{
     console.log(data);
-   let humedad = document.getElementById('humedad');
-   humedad.innerHTML = `${data.humedad || 0}`;
+   let humedad1 = document.getElementById('humedad1');
+   humedad1.innerHTML = `${data.humedad1 || 0}`;
 });
 
 
 socket.on('data',(data) =>{
     console.log(data);
-   let ppmMQ4 = document.getElementById('gas');
-   ppmMQ4.innerHTML = `${data.ppmMQ4 || 0}`;
+   let ppmMQ41 = document.getElementById('gas1');
+   ppmMQ41.innerHTML = `${data.ppmMQ41 || 0}`;
 });
 
 socket.on('data',(data) =>{
    console.log(data);
-   let ppmMQ4Compensado = document.getElementById('gasCompensado');
-   ppmMQ4Compensado.innerHTML = `${data.ppmMQ4Compensado || 0}`;
+   let ppmMQ4Compensado1 = document.getElementById('gasCompensado1');
+   ppmMQ4Compensado1.innerHTML = `${data.ppmMQ4Compensado1 || 0}`;
 });
 
 
@@ -55,7 +55,7 @@ socket.on('data',(data) =>{
 
 
 function initCharts() {
-    airQualityGauge = new Chart(document.getElementById('airQualityGauge'), {
+    airQualityGauge = new Chart(document.getElementById('airQualityGauge1'), {
         type: 'doughnut',
         data: {
             datasets: [{
@@ -81,16 +81,12 @@ function initCharts() {
 
 
 
-socket.on('data',(data) =>{
-    console.log(data);
-   let humedad = document.getElementById('humedad');
-   humedad.innerHTML = `${data.humedad || 0}`;
-});
+
 
 socket.on('data',(data) =>{
     console.log(data);
     initCharts();
-    const ppmMQ135Value = data.ppmMQ135 || 0;
+    const ppmMQ135Value = data.ppmMQ1351 || 0;
     const airQualityPercentage = ((ppmMQ135Value / 10000) * 100).toFixed(1);
     const ppmMQ135Element = document.getElementById('ppmMQ135');
     ppmMQ135Element.innerHTML = `${airQualityPercentage}%`;
