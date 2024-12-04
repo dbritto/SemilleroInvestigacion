@@ -28,11 +28,14 @@ const { Socket } = require('dgram');
 
 // URL del ESP32 (ajusta si cambia la dirección IP)
 const ESP32_URL = "http://192.168.0.132/datos";
+const ESP32_URL_2 = "http://192.168.0.133/datos";
+const ESP32_URL_3 = "http://192.168.0.134/datos";
 
 // Función para obtener datos del ESP32
-async function obtenerDatosESP32() {
+async function obtenerDatosESP32(url) {
     try {
-        const respuesta = await axios.get(ESP32_URL);
+        const respuesta = await axios.get(url);
+        
         console.log("Datos recibidos del ESP32:");
         //console.log("Temperatura:", respuesta.data.temperatura);
        // console.log("Humedad:", respuesta.data.humedad);
@@ -58,24 +61,63 @@ io.on('connection',(socket)=>{
 // Llama a la función cada 5 segundos
 setInterval(async ()=>{
     try{
-        const data = await obtenerDatosESP32();
-        io.emit('data',{
-            temperaturaC1: data.temperaturaC,
-            temperaturaF1: data.temperaturaF,
-            humedad1: data.humedad,
-            //Calidad del aire
-            ppmMQ1351: data.ppmMQ135,
-            //Calidad del aire compensado
-            ppmMQ135Compensado1: data.ppmMQ135Compensado,
-            //Metano
-            ppmMQ41: data.ppmMQ4,
-            //metano compensado
-            ppmMQ4Compensado1: data.ppmMQ4Compensado,
-            //humedad del suelo
-            humedadSuelo1: data.humedadSuelo,
-            //ReleEstado
-            estado:data.releEstado
-        });
+        const data_sensor_1 = await obtenerDatosESP32(ESP32_URL);
+        const data_sensor_2 = await obtenerDatosESP32(ESP32_URL_1);
+        const data_sensor_3 = await obtenerDatosESP32(ESP32_URL_2);
+    
+            io.emit('data_sensor_1',{
+                temperaturaC1: data_sensor_1.temperaturaC,
+                temperaturaF1: data_sensor_1.temperaturaF,
+                humedad1: data_sensor_1.humedad,
+                //Calidad del aire
+                ppmMQ1351: data_sensor_1.ppmMQ135,
+                //Calidad del aire compensado
+                ppmMQ135Compensado1: data_sensor_1.ppmMQ135Compensado,
+                //Metano
+                ppmMQ41: data_sensor_1.ppmMQ4,
+                //metano compensado
+                ppmMQ4Compensado1: data_sensor_1.ppmMQ4Compensado,
+                //humedad del suelo
+                humedadSuelo1: data_sensor_1.humedadSuelo,
+                //ReleEstado
+                estado:data_sensor_1.releEstado
+            });
+            io.emit('data_sensor_2',{
+                temperaturaC1: data_sensor_2.temperaturaC,
+                temperaturaF1: data_sensor_2.temperaturaF,
+                humedad1: data_sensor_2.humedad,
+                //Calidad del aire
+                ppmMQ1351: data_sensor_2.ppmMQ135,
+                //Calidad del aire compensado
+                ppmMQ135Compensado1: data_sensor_2.ppmMQ135Compensado,
+                //Metano
+                ppmMQ41: data_sensor_2.ppmMQ4,
+                //metano compensado
+                ppmMQ4Compensado1: data_sensor_2.ppmMQ4Compensado,
+                //humedad del suelo
+                humedadSuelo1: data_sensor_2.humedadSuelo,
+                //ReleEstado
+                estado:data_sensor_2.releEstado
+            });
+            io.emit('data_sensor_3',{
+                temperaturaC1: data_sensor_3.temperaturaC,
+                temperaturaF1: data_sensor_3.temperaturaF,
+                humedad1: data_sensor_3.humedad,
+                //Calidad del aire
+                ppmMQ1351: data_sensor_3.ppmMQ135,
+                //Calidad del aire compensado
+                ppmMQ135Compensado1: data_sensor_3.ppmMQ135Compensado,
+                //Metano
+                ppmMQ41: data_sensor_3.ppmMQ4,
+                //metano compensado
+                ppmMQ4Compensado1: data_sensor_3.ppmMQ4Compensado,
+                //humedad del suelo
+                humedadSuelo1: data_sensor_3.humedadSuelo,
+                //ReleEstado
+                estado:data_sensor_3.releEstado
+            });
+        
+        
     }catch(error){
         console.log(error);
     }
