@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo_sena.png" type="image/x-icon">
+    <title>FLYINNOVA 2024</title>
+    <link rel="stylesheet" href="./css/Style.css">
+    <script src="chart.min.js"></script>
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+
+    <script>
+        function guardarDatos(){
+            socket.emit('guardarDatos');
+            alert("guardando datos");
+        }
+
+        socket.on('confirmacion',(mensaje)=>{
+            alert(mensaje);
+        });
+
+        // Función para cambiar entre secciones
+        function cambiarSeccion(seccion) {
+            // Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.main-seccion');
+            secciones.forEach((section) => {
+                section.style.display = 'none';
+            });
+
+            // Mostrar la sección seleccionada
+            const seleccionada = document.getElementById('seccion' + seccion);
+            seleccionada.style.display = 'block';
+
+            // Cambiar el estado activo en la barra de navegación
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Establecer el enlace activo
+            const activeLink = document.getElementById('link' + seccion);
+            activeLink.classList.add('active');
+        }
+
+        // Cambiar a la primera sección por defecto al cargar la página
+        window.onload = function() {
+            cambiarSeccion(1);
+        };
+    </script>
+  
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logos">
+                <img src="./img/Alianza_Bioversity_&_CIAT.png" class="logo">
+                <img src="./img/led_apagado.png" alt="Logo sena" class="logo-sena">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" id="link1" onclick="cambiarSeccion(1)" class="active">ESP32 1</a></li>
+                <li><a href="#" id="link2" onclick="cambiarSeccion(2)">ESP32 2</a></li>
+                <li><a href="#" id="link3" onclick="cambiarSeccion(3)">ESP32 3</a></li>
+            </ul>
+            <li>
+                <button onclick="toggleTheme()" class="theme-toggle">
+                    <img src="img/sun-icon.png" alt="Tema claro" class="theme-icon light-icon" width="24" height="24">
+                    <img src="img/moon-icon.png" alt="Tema oscuro" class="theme-icon dark-icon" width="24" height="24">
+                </button>
+            </li>
+            <div class="user-icon">👤</div>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <!-- Sección 1 -->
+        <div id="seccion1" class="main-seccion" style="display: block;">
+            
+            <h2>ESP32 1</h2>
+            <div class="metrics-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="metric-card" >
+                    <h4>Humificador</h4>
+                    <div class="gauge-container">
+                        <img src="./img/led_encendido.png" alt="Tema claro" class="theme-icon light-icon" width="24" height="24">
+                        <img src="./img/led_apagado.png" alt="Tema oscuro" class="theme-icon dark-icon" width="24" height="24">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Calidad del aire</h4>
+                    <div class="gauge-container">
+                        <canvas id="airQualityGauge"></canvas>
+                        <div id="ppmMQ135" class="gauge-percentage">--%</div>
+                    </div>
+                    <div id="ppmcalidadeaire" class="unit"></div>
+                </div>
+
+
+                
+                
+                
+                
+                <div class="metric-card">
+                    <h4>Temperatura °C</h4>
+                    <div class="metric-value">
+                        <span id="temperaturaC">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    
+                    <h4>Temperatura °F</h4>
+                    
+                    <div class="metric-value">
+                        <span id="temperaturaF">--</span>
+                        <span class="unit">°F</span>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="metric-card">
+                    <h4>Humedad Suelo</h4>
+                    <div class="metric-value">
+                        <span id="humedadSuelo">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="metric-card">
+                    <h4>Humedad</h4>
+                    <div class="metric-value">
+                        <span id="humedad">--</span>
+                        <span class="unit"></span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            <div class="charts-grid">
+                <div class="chart-card"></div>
+                
+                <div class="chart-card gas-monitor">
+                    <h4>Gas metano</h4>
+                    <div class="monitor-display">
+                        <span>Gas metano</span>
+                        <div id="gas" class="co2-value">---</div>
+                        <div class="co2-unit">PPM</div>
+                        <div class="monitor-details">
+                            <div class="gasCompensado">
+                                <span>Metano Compensado</span>
+                                <div id="gasCompensado">--%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección 2 -->
+        <div id="seccion2" class="main-seccion" style="display: none;">
+            <h2>ESP32 2</h2>
+            
+            <div class="guardar">
+                <button onclick="guardarDatos()">Guardar Datos</button>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Calidad del aire</h4>
+                    <div class="gauge-container">
+                        <canvas id="airQualityGauge2"></canvas>
+                        <div id="ppmMQ1352" class="gauge-percentage">--%</div>
+                    </div>
+                    <div id="ppmcalidadeaire2" class="unit"></div>
+                </div>
+                <div class="metric-card">
+                    <h4>Temperatura °C</h4>
+                    <div class="metric-value">
+                        <span id="temperaturec">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    <h4>Temperatura °F</h4>
+                    <div class="metric-value">
+                        <span id="temperaturef">--</span>
+                        <span class="unit">°F</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <h4>Humedad Suelo</h4>
+                    <div class="metric-value">
+                        <span id="humedadSuelo2">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <h4>Humedad</h4>
+                    <div class="metric-value">
+                        <span id="humedad2">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="charts-grid">
+                <div class="chart-card"></div>
+                
+                <div class="chart-card gas-monitor">
+                    <h4>Gas metano</h4>
+                    <div class="monitor-display">
+                        <span>Gas metano</span>
+                        <div id="gas2" class="co2-value">---</div>
+                        <div class="co2-unit">PPM</div>
+                        <div class="monitor-details">
+                            <div class="gasCompensado2">
+                                <span>Metano Compensado</span>
+                                <div id="gasCompensado2">--%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Sección 3 -->
+        <div id="seccion3" class="main-seccion" style="display: none;">
+            <h2>ESP32 3</h2>
+
+            <div class="guardar">
+                <button onclick="guardarDatos()">Guardar Datos</button>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Calidad del aire</h4>
+                    <div class="gauge-container">
+                        <canvas id="airQualityGauge3"></canvas>
+                        <div id="ppmMQ1353" class="gauge-percentage">--%</div>
+                    </div>
+                    <div id="ppmcalidadeaire3" class="unit"></div>
+                </div>
+                <div class="metric-card">
+                    <h4>Temperatura °C</h4>
+                    <div class="metric-value">
+                        <span id="temperaturaC3">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    <h4>Temperatura °F</h4>
+                    <div class="metric-value">
+                        <span id="temperaturaF3">--</span>
+                        <span class="unit">°F</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <h4>Humedad Suelo</h4>
+                    <div class="metric-value">
+                        <span id="humedadSuelo3">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <h4>Humedad</h4>
+                    <div class="metric-value">
+                        <span id="humedad3">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card"></div>
+
+                <div class="chart-card gas-monitor">
+                    <h4>Gas metano</h4>
+                    <div class="monitor-display">
+                        <span>Gas metano</span>
+                        <div id="gas3" class="co2-value">---</div>
+                        <div class="co2-unit">PPM</div>
+                        <div class="monitor-details">
+                            <div class="gasCompensado">
+                                <span>Metano Compensado</span>
+                                <div id="gasCompensado3">--%</div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <!-- <script src="script.js"></script> -->
+</body>
+</html>
+
