@@ -11,7 +11,7 @@ function updateChartsTheme() {
     const backgroundColor = isDarkTheme ? '#333' : '#fff';
     const textColor = isDarkTheme ? '#fff' : '#333';
     if (airQualityGauge) {
-        airQualityGauge.data.datasets[0].backgroundColor[1] = isDarkTheme ? '#444' : '#e5e7eb';
+        airQualityGauge.data.datasets[0].backgroundColor[0] = isDarkTheme ? '#444' : '#e5e7eb';
         airQualityGauge.update();
     }
 }
@@ -19,6 +19,11 @@ function updateChartsTheme() {
 
 
 const socket = io();
+
+
+
+
+
 
 
 // socket.on('data_sensor',(data_sensor) =>{

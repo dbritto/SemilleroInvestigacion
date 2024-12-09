@@ -84,6 +84,27 @@ async function  insertData(data,sensor){
     }
 });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Llama a la función cada 3 segundos
 let intento = 1;
 setInterval(async ()=>{

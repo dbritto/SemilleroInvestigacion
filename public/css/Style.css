@@ -304,3 +304,43 @@ margin-bottom: 30px;
     justify-content: end;
     width: 100%;
 }
+
+
+.container-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    padding: 30px 0;
+    margin-bottom: 100px;
+}
+
+
+.container-flex .chart-card {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    width: 80%;
+    height: 400px;
+}
+
+
+.container-flex .chart-card table {
+    width: 100%;
+    height: 100%;
+    border: #000 1px solid;
+
+}
+
+th{
+    text-align: center;
+    border: #000 1px solid;
+}
+
+.container-flex .chart-card-2{
+    width: 20%;
+    margin-left: 20px;
+    margin-right: 20px; 
+    height: 400px;
+}

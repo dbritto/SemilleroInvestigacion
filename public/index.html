@@ -10,7 +10,11 @@
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
 
+ 
+
     <script>
+
+        
         function guardarDatos(){
             socket.emit('guardarDatos');
             alert("guardando datos");
@@ -47,6 +51,10 @@
         window.onload = function() {
             cambiarSeccion(1);
         };
+
+
+        
+      
     </script>
   
 </head>
@@ -144,13 +152,13 @@
             </div>
             
             
-            
-            
-            <div class="charts-grid">
+              
+            <div class="container-flex">
                 <div class="chart-card">
+                   
                     <table>
                         <thead>
-                            <th>ID</th>
+                            <th>N</th>
                             <th>Calidad del aire</th>
                             <th>ppmMQ135</th>
                             <th>Temperatura C</th>
@@ -162,14 +170,21 @@
                         </thead>
 
                         <tbody>
-
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
                         </tbody>
                     </table>
 
 
                 </div>
                 
-                <div class="chart-card gas-monitor">
+                <div class="chart-card-2 gas-monitor">
                     <h4>Gas metano</h4>
                     <div class="monitor-display">
                         <span>Gas metano</span>
@@ -190,8 +205,17 @@
         <div id="seccion2" class="main-seccion" style="display: none;">
             <h2>ESP32 2</h2>
             
-            <div class="guardar">
-                <button onclick="guardarDatos()">Guardar Datos</button>
+            <div class="metrics-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="metric-card" >
+                    <h4>Humificador</h4>
+                    <div class="gauge-container">
+                        <img src="./img/led_apagado.jpg" alt="Tema claro" class="theme-icon light-icon" width="50" height="50">
+                        <img src="./img/led_encendido.jpg" alt="Tema oscuro" class="theme-icon dark-icon" width="50" height="50">
+                    </div>
+                </div>
             </div>
             
             <div class="metrics-grid">
@@ -231,17 +255,46 @@
                 </div>
             </div>
             
-            <div class="charts-grid">
-                <div class="chart-card"></div>
+            
+            <div class="container-flex">
+                <div class="chart-card">
+                   
+                    <table>
+                        <thead>
+                            <th>N</th>
+                            <th>Calidad del aire</th>
+                            <th>ppmMQ135</th>
+                            <th>Temperatura C</th>
+                            <th>Temperatura F</th>
+                            <th>Humedad</th>
+                            <th>Gas</th>
+                            <th>Gas Compensado</th>
+
+                        </thead>
+
+                        <tbody>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                        </tbody>
+                    </table>
+
+
+                </div>
                 
-                <div class="chart-card gas-monitor">
+                <div class="chart-card-2 gas-monitor">
                     <h4>Gas metano</h4>
                     <div class="monitor-display">
                         <span>Gas metano</span>
                         <div id="gas2" class="co2-value">---</div>
                         <div class="co2-unit">PPM</div>
                         <div class="monitor-details">
-                            <div class="gasCompensado2">
+                            <div class="gasCompensado">
                                 <span>Metano Compensado</span>
                                 <div id="gasCompensado2">--%</div>
                             </div>
@@ -257,8 +310,17 @@
         <div id="seccion3" class="main-seccion" style="display: none;">
             <h2>ESP32 3</h2>
 
-            <div class="guardar">
-                <button onclick="guardarDatos()">Guardar Datos</button>
+            <div class="metrics-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="metric-card" >
+                    <h4>Humificador</h4>
+                    <div class="gauge-container">
+                        <img src="./img/led_apagado.jpg" alt="Tema claro" class="theme-icon light-icon" width="50" height="50">
+                        <img src="./img/led_encendido.jpg" alt="Tema oscuro" class="theme-icon dark-icon" width="50" height="50">
+                    </div>
+                </div>
             </div>
 
             <div class="metrics-grid">
@@ -298,10 +360,38 @@
                 </div>
             </div>
 
-            <div class="charts-grid">
-                <div class="chart-card"></div>
+            <div class="container-flex">
+                <div class="chart-card">
+                   
+                    <table>
+                        <thead>
+                            <th>N</th>
+                            <th>Calidad del aire</th>
+                            <th>ppmMQ135</th>
+                            <th>Temperatura C</th>
+                            <th>Temperatura F</th>
+                            <th>Humedad</th>
+                            <th>Gas</th>
+                            <th>Gas Compensado</th>
 
-                <div class="chart-card gas-monitor">
+                        </thead>
+
+                        <tbody>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                
+                <div class="chart-card-2 gas-monitor">
                     <h4>Gas metano</h4>
                     <div class="monitor-display">
                         <span>Gas metano</span>
@@ -313,7 +403,7 @@
                                 <div id="gasCompensado3">--%</div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
