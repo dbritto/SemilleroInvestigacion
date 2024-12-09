@@ -21,26 +21,26 @@ function updateChartsTheme() {
 const socket = io();
 
 
-socket.on('data_sensor',(data_sensor) =>{
-    console.log(data_sensor);
-   let temperature1 = document.getElementById('temperaturec');
-   temperature1.innerHTML = `${data_sensor.temperaturaC || 0}`;
-});
+// socket.on('data_sensor',(data_sensor) =>{
+//     console.log(data_sensor);
+//    let temperature1 = document.getElementById('temperaturec');
+//    temperature1.innerHTML = `${data_sensor.temperaturaC || 0}`;
+// });
 
 
 
-socket.on('data_sensor_2',(data_sensor_2) =>{
-    console.log(data_sensor_2);
-   let temperature2 = document.getElementById('temperaturec2');
-   temperature2.innerHTML = `${data_sensor_2.temperaturaC || 0}`;
-});
+// socket.on('data_sensor_2',(data_sensor_2) =>{
+//     console.log(data_sensor_2);
+//    let temperature2 = document.getElementById('temperaturec2');
+//    temperature2.innerHTML = `${data_sensor_2.temperaturaC || 0}`;
+// });
 
 
-socket.on('data_sensor_3',(data_sensor_3) =>{
-    console.log(data_sensor_3);
-   let temperature3 = document.getElementById('temperaturec3');
-   temperature3.innerHTML = `${data_sensor_3.temperaturaC || 0}`;
-});
+// socket.on('data_sensor_3',(data_sensor_3) =>{
+//     console.log(data_sensor_3);
+//    let temperature3 = document.getElementById('temperaturec3');
+//    temperature3.innerHTML = `${data_sensor_3.temperaturaC || 0}`;
+// });
 
 
 
@@ -50,24 +50,24 @@ socket.on('data_sensor_3',(data_sensor_3) =>{
 
 
 
-socket.on('data_sensor',(data_sensor) =>{
-    console.log(data_sensor);
-   let temperatureF = document.getElementById('temperaturef');
-   temperatureF.innerHTML = `${data_sensor.temperaturaF || 0}`;
-});
+// socket.on('data_sensor',(data_sensor) =>{
+//     console.log(data_sensor);
+//    let temperatureF = document.getElementById('temperaturef');
+//    temperatureF.innerHTML = `${data_sensor.temperaturaF || 0}`;
+// });
 
-socket.on('data_sensor_2',(data_sensor_2) =>{
-    console.log(data_sensor_2);
-   let temperatureF = document.getElementById('temperaturef2');
-   temperatureF.innerHTML = `${data_sensor_2.temperaturaF || 0}`;
-});
+// socket.on('data_sensor_2',(data_sensor_2) =>{
+//     console.log(data_sensor_2);
+//    let temperatureF = document.getElementById('temperaturef2');
+//    temperatureF.innerHTML = `${data_sensor_2.temperaturaF || 0}`;
+// });
 
 
-socket.on('data_sensor_3',(data_sensor_3) =>{
-    console.log(data_sensor_3);
-   let temperatureF = document.getElementById('temperaturef2');
-   temperatureF.innerHTML = `${data_sensor_2.temperaturaF || 0}`;
-});
+// socket.on('data_sensor_3',(data_sensor_3) =>{
+//     console.log(data_sensor_3);
+//    let temperatureF = document.getElementById('temperaturef2');
+//    temperatureF.innerHTML = `${data_sensor_2.temperaturaF || 0}`;
+// });
 
 
 
@@ -78,25 +78,25 @@ socket.on('data_sensor_3',(data_sensor_3) =>{
 
 
 
-socket.on('data_sensor',(data_sensor) =>{
-    console.log(data_sensor);
-   let humedadSuelo = document.getElementById('humedadSuelo');
-   humedadSuelo.innerHTML = `${data_sensor.humedadSuelo || 0}`;
-});
+// socket.on('data_sensor',(data_sensor) =>{
+//     console.log(data_sensor);
+//    let humedadSuelo = document.getElementById('humedadSuelo');
+//    humedadSuelo.innerHTML = `${data_sensor.humedadSuelo || 0}`;
+// });
 
 
-socket.on('data_sensor_2',(data_sensor_2) =>{
-    console.log(data_sensor_2);
-   let humedadSuelo = document.getElementById('humedadSuelo2');
-   humedadSuelo.innerHTML = `${data_sensor_2.humedadSuelo || 0}`;
-});
+// socket.on('data_sensor_2',(data_sensor_2) =>{
+//     console.log(data_sensor_2);
+//    let humedadSuelo = document.getElementById('humedadSuelo2');
+//    humedadSuelo.innerHTML = `${data_sensor_2.humedadSuelo || 0}`;
+// });
 
 
-socket.on('data_sensor_3',(data_sensor_3) =>{
-    console.log(data_sensor_3);
-   let humedadSuelo = document.getElementById('humedadSuelo3');
-   humedadSuelo.innerHTML = `${data_sensor_3.humedadSuelo || 0}`;
-});
+// socket.on('data_sensor_3',(data_sensor_3) =>{
+//     console.log(data_sensor_3);
+//    let humedadSuelo = document.getElementById('humedadSuelo3');
+//    humedadSuelo.innerHTML = `${data_sensor_3.humedadSuelo || 0}`;
+// });
 
 
 
@@ -110,25 +110,25 @@ socket.on('data_sensor_3',(data_sensor_3) =>{
 
 
 
-socket.on('data_sensor', (data_sensor) => {
-    console.log(data_sensor);
-   let humedad = document.getElementById('humedad');
-   humedad.innerHTML = `${data_sensor.humedad || 0}`;
-});
+// socket.on('data_sensor', (data_sensor) => {
+//     console.log(data_sensor);
+//    let humedad = document.getElementById('humedad');
+//    humedad.innerHTML = `${data_sensor.humedad || 0}`;
+// });
 
 
-socket.on('data_sensor_2', (data_sensor_2) => {
-    console.log(data_sensor_2);
-   let humedad = document.getElementById('humedad2');
-   humedad.innerHTML = `${data_sensor_2.humedad || 0}`;
-});
+// socket.on('data_sensor_2', (data_sensor_2) => {
+//     console.log(data_sensor_2);
+//    let humedad = document.getElementById('humedad2');
+//    humedad.innerHTML = `${data_sensor_2.humedad || 0}`;
+// });
 
 
-socket.on('data_sensor_3', (data_sensor_3) => {
-    console.log(data_sensor_3);
-   let humedad = document.getElementById('humedad3');
-   humedad.innerHTML = `${data_sensor_3.humedad || 0}`;
-});
+// socket.on('data_sensor_3', (data_sensor_3) => {
+//     console.log(data_sensor_3);
+//    let humedad = document.getElementById('humedad3');
+//    humedad.innerHTML = `${data_sensor_3.humedad || 0}`;
+// });
 
 
 
@@ -148,23 +148,23 @@ socket.on('data_sensor_3', (data_sensor_3) => {
 
 
 
-socket.on('data_sensor', (data_sensor) => {
-    console.log(data_sensor);
-   let ppmMQ4 = document.getElementById('gas');
-   ppmMQ4.innerHTML = `${data_sensor.ppmMQ4 || 0}`;
-});
+// socket.on('data_sensor', (data_sensor) => {
+//     console.log(data_sensor);
+//    let ppmMQ4 = document.getElementById('gas');
+//    ppmMQ4.innerHTML = `${data_sensor.ppmMQ4 || 0}`;
+// });
 
-socket.on('data_sensor_2', (data_sensor_2) => {
-    console.log(data_sensor_2);
-   let ppmMQ4 = document.getElementById('gas2');
-   ppmMQ4.innerHTML = `${data_sensor_2.ppmMQ4 || 0}`;
-});
+// socket.on('data_sensor_2', (data_sensor_2) => {
+//     console.log(data_sensor_2);
+//    let ppmMQ4 = document.getElementById('gas2');
+//    ppmMQ4.innerHTML = `${data_sensor_2.ppmMQ4 || 0}`;
+// });
 
-socket.on('data_sensor_3', (data_sensor_3) => {
-    console.log(data_sensor_3);
-   let ppmMQ4 = document.getElementById('gas3');
-   ppmMQ4.innerHTML = `${data_sensor_3.ppmMQ4 || 0}`;
-});
+// socket.on('data_sensor_3', (data_sensor_3) => {
+//     console.log(data_sensor_3);
+//    let ppmMQ4 = document.getElementById('gas3');
+//    ppmMQ4.innerHTML = `${data_sensor_3.ppmMQ4 || 0}`;
+// });
 
 
 
@@ -180,27 +180,27 @@ socket.on('data_sensor_3', (data_sensor_3) => {
 
 
 
-socket.on('data_sensor',(data_sensor) =>{
-   console.log(data_sensor);
-   let ppmMQ4Compensado = document.getElementById('gasCompensado');
-   ppmMQ4Compensado.innerHTML = `${data_sensor.ppmMQ4Compensado || 0}`;
-});
+// socket.on('data_sensor',(data_sensor) =>{
+//    console.log(data_sensor);
+//    let ppmMQ4Compensado = document.getElementById('gasCompensado');
+//    ppmMQ4Compensado.innerHTML = `${data_sensor.ppmMQ4Compensado || 0}`;
+// });
 
 
 
-socket.on('data_sensor_2',() =>{
-    console.log(data_sensor_2);
-    let ppmMQ4Compensado = document.getElementById('gasCompensado2');
-    ppmMQ4Compensado.innerHTML = `${data_sensor_2.ppmMQ4Compensado || 0}`;
-});
+// socket.on('data_sensor_2',() =>{
+//     console.log(data_sensor_2);
+//     let ppmMQ4Compensado = document.getElementById('gasCompensado2');
+//     ppmMQ4Compensado.innerHTML = `${data_sensor_2.ppmMQ4Compensado || 0}`;
+// });
 
 
 
-socket.on('data_sensor_3',(data_sensor_3) =>{
-    console.log(data_sensor_3);
-    let ppmMQ4Compensado = document.getElementById('gasCompensado3');
-    ppmMQ4Compensado.innerHTML = `${data_sensor_3.ppmMQ4Compensado || 0}`;
-});
+// socket.on('data_sensor_3',(data_sensor_3) =>{
+//     console.log(data_sensor_3);
+//     let ppmMQ4Compensado = document.getElementById('gasCompensado3');
+//     ppmMQ4Compensado.innerHTML = `${data_sensor_3.ppmMQ4Compensado || 0}`;
+// });
 
 
 
