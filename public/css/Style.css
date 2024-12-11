@@ -49,10 +49,8 @@ background-color: #1a1a1a;
 
 
 .container {
-width: 100%;
-max-width: 1200px;
+width: 95%;
 margin: 0 auto;
-padding: 0 20px;
 }
 
 .navbar {
@@ -185,7 +183,7 @@ margin-left: 5px;
 
 .charts-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+grid-template-columns: auto 300px;
 gap: 20px;
 }
 
@@ -333,10 +331,18 @@ margin-bottom: 30px;
 
 }
 
-th{
+.container-flex .chart-card table tbody td{
     text-align: center;
     border: #000 1px solid;
 }
+
+.container-flex .chart-card table tbody tr{
+    height: 20px;
+}
+
+
+
+
 
 .container-flex .chart-card-2{
     width: 20%;
@@ -344,3 +350,20 @@ th{
     margin-right: 20px; 
     height: 400px;
 }
+
+
+.tablas{
+    width: 100%;
+    height: 100%;
+    border: #000 1px solid;
+    border-spacing: 0;
+    text-align: center;
+}
+
+
+.tablas  td{
+border-top: #000 1px solid;
+text-align: center;
+}
+
+

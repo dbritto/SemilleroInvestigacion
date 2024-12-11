@@ -1,0 +1,50 @@
+[
+  {
+    "promedio_ppmMQ135": 101.62,
+    "promedio_ppmMQ135Compensado": 90.98,
+    "promedio_temperaturaC": 24.87,
+    "promedio_temperaturaF": 76.77,
+    "promedio_humedad": 64.62,
+    "promedio_humedadSuelo": 50.98,
+    "promedio_ppmMQ4": 20.91,
+    "promedio_ppmMQ4Compensado": 18.9,
+    "fecha": "2024-12-01T13:00:00.000Z",
+    "sensor": "Sensor1"
+  },
+  {
+    "promedio_ppmMQ135": 111.42,
+    "promedio_ppmMQ135Compensado": 101.42,
+    "promedio_temperaturaC": 26.27,
+    "promedio_temperaturaF": 79.28,
+    "promedio_humedad": 67.71,
+    "promedio_humedadSuelo": 52.71,
+    "promedio_ppmMQ4": 25.71,
+    "promedio_ppmMQ4Compensado": 23.71,
+    "fecha": "2024-12-01T13:00:00.000Z",
+    "sensor": "Sensor2"
+  },
+  {
+    "promedio_ppmMQ135": 122,
+    "promedio_ppmMQ135Compensado": 112,
+    "promedio_temperaturaC": 24.84,
+    "promedio_temperaturaF": 76.72,
+    "promedio_humedad": 64,
+    "promedio_humedadSuelo": 54,
+    "promedio_ppmMQ4": 31.4,
+    "promedio_ppmMQ4Compensado": 29.4,
+    "fecha": "2024-12-01T13:00:00.000Z",
+    "sensor": "Sensor3"
+  },
+  {
+    "promedio_ppmMQ135": 127,
+    "promedio_ppmMQ135Compensado": 117,
+    "promedio_temperaturaC": 25.8,
+    "promedio_temperaturaF": 78.44,
+    "promedio_humedad": 66.5,
+    "promedio_humedadSuelo": 56.5,
+    "promedio_ppmMQ4": 34,
+    "promedio_ppmMQ4Compensado": 32,
+    "fecha": "2024-12-02T13:00:00.000Z",
+    "sensor": "Sensor3"
+  }
+]

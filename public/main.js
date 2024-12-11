@@ -11,7 +11,7 @@ function updateChartsTheme() {
     const backgroundColor = isDarkTheme ? '#333' : '#fff';
     const textColor = isDarkTheme ? '#fff' : '#333';
     if (airQualityGauge) {
-        airQualityGauge.data.datasets[0].backgroundColor[0] = isDarkTheme ? '#444' : '#e5e7eb';
+        airQualityGauge.data.datasets[0].backgroundColor[1] = isDarkTheme ? '#444' : '#e5e7eb';
         airQualityGauge.update();
     }
 }
@@ -19,11 +19,6 @@ function updateChartsTheme() {
 
 
 const socket = io();
-
-
-
-
-
 
 
 // socket.on('data_sensor',(data_sensor) =>{
@@ -222,6 +217,132 @@ const socket = io();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+setInterval(datosTabla, 15000);
+
+async function datosTabla() {
+
+    // Escuchar el evento `data_sql` para recibir los datos
+    socket.on('data_sql', (dataSql) => {
+        if (dataSql && dataSql.length > 0) {
+            let contador = 1;
+
+            ['tabla_datos_sensor', 'tabla_datos_sensor_2', 'tabla_datos_sensor_3'].forEach(tablaId => {
+                let tablaOld = document.getElementById(tablaId);
+                tablaOld.removeChild(tablaOld.querySelector("tbody"));
+            });
+
+            dataSql.forEach((row) => {
+                // Determinar la tabla según el sensor
+                let tablaId;
+                switch (row.sensor) {
+                    case "sensor1":
+                        tablaId = 'tabla_datos_sensor';
+                        break;
+                    case "sensor2":
+                        tablaId = 'tabla_datos_sensor_2';
+                        break;
+                    case "sensor3":
+                        tablaId = 'tabla_datos_sensor_3';
+                        break;
+                    default:
+                        console.warn(`Sensor desconocido: ${row.sensor}`);
+                        return; // Saltar a la siguiente iteración
+                }
+
+                // Obtener la tabla correspondiente
+                let tabla = document.getElementById(tablaId);
+                if (!tabla) {
+                    console.error(`No se encontró la tabla con ID: ${tablaId}`);
+                    return;
+                }
+
+                // Asegurar un `<tbody>` en la tabla
+                let tbody = tabla.querySelector("tbody") || tabla.appendChild(document.createElement("tbody"));
+
+                // Crear una nueva fila con los datos
+                let tr = document.createElement("tr");
+
+                let fecha = row.fecha.split("T");
+
+                tr.innerHTML = `
+                    <td>${contador++}</td>
+                    <td>${row.promedio_ppmMQ135}%</td>
+                    <td>${row.promedio_ppmMQ135Compensado}</td>
+                    <td>${row.promedio_temperaturaC}°C</td>
+                    <td>${row.promedio_temperaturaF}°F</td>
+                    <td>${row.promedio_humedad}</td>
+                    <td>${row.promedio_humedadSuelo}</td>
+                    <td>${row.promedio_ppmMQ4}</td>
+                    <td>${row.promedio_ppmMQ4Compensado}</td>
+                    <td>${fecha[0]}</th>
+                `;
+
+                // Agregar la fila al cuerpo de la tabla
+                tbody.appendChild(tr);
+            });
+
+            console.log("Consulta exitosa Frontend:", dataSql);
+        } else {
+            // Si no hay datos, limpiar y mostrar un mensaje en cada tabla
+            ['tabla_datos_sensor', 'tabla_datos_sensor_2', 'tabla_datos_sensor_3'].forEach(tablaId => {
+                const tabla = document.getElementById(tablaId);
+                if (tabla) {
+                    const tbody = tabla.querySelector("tbody") || tabla.appendChild(document.createElement("tbody"));
+                    tbody.innerHTML = `<tr><td colspan="10">No hay información para mostrar</td></tr>`;
+                }
+            });
+
+            console.log("No hay datos disponibles");
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 socket.on('data_sensores',(sensor) =>{
     
     if(sensor.data_sensor !== undefined){
@@ -243,10 +364,10 @@ socket.on('data_sensores',(sensor) =>{
         humedadSuelo.innerHTML = `${data.humedadSuelo || 0}`;
 
         let gas =document.getElementById('gas');
-        gas.innerHTML = `${data.gas || 0}`;
+        gas.innerHTML = `${data.ppmMQ4 || 0}`;
 
         let gasCompensado = document.getElementById('gasCompensado');
-        gasCompensado.innerHTML = `${data.gasCompensado || 0}`;
+        gasCompensado.innerHTML = `${data.ppmMQ4Compensado || 0}`;
 
         
         let ppmMQ135Value = data.ppmMQ135 || 0;
@@ -287,10 +408,10 @@ socket.on('data_sensores',(sensor) =>{
 
 
         let gas2 = document.getElementById('gas2');
-        gas2.innerHTML = `${data_2.gas || 0}`;
+        gas2.innerHTML = `${data_2.ppmMQ4 || 0}`;
 
         let gasCompensado2 = document.getElementById('gasCompensado2');
-        gasCompensado2.innerHTML = `${data_2.gasCompensado || 0}`;
+        gasCompensado2.innerHTML = `${data_2.ppmMQ4Compensado || 0}`;
 
         let ppmMQ135Value = data_2.ppmMQ135 || 0;
         let airQualityPercentage = ((ppmMQ135Value / 10000) * 100).toFixed(1);
@@ -330,10 +451,10 @@ socket.on('data_sensores',(sensor) =>{
 
 
         let gas3 = document.getElementById('gas3');
-        gas3.innerHTML = `${data_3.gas || 0}`;
+        gas3.innerHTML = `${data_3.ppmMQ4 || 0}`;
 
         let gasCompensado3 = document.getElementById('gasCompensado3');
-        gasCompensado3.innerHTML = `${data_3.gasCompensado || 0}`;
+        gasCompensado3.innerHTML = `${data_3.ppmMQ4Compensado || 0}`;
 
         let ppmMQ135Value = data_3.ppmMQ135 || 0;
         let airQualityPercentage = ((ppmMQ135Value / 10000) * 100).toFixed(1);
@@ -556,4 +677,3 @@ function actualizarChart3(valor) {
         }
     });
 }
-
